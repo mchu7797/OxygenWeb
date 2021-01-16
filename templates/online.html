@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="20">
+    <title>Oxygen - Online Player List</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap');
+
+        * {
+            color: #CECCCC;
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: 16px;
+        }
+
+        body {
+            background-color: #0F110C;
+        }
+
+        highlight {
+            font-size: 24px;
+            font-weight: bold;
+            color: #9D6381;
+        }
+    </style>
+</head>
+<body>
+<highlight>ONLINE : {{ online['all_players_count'] }}</highlight>
+<br><br>
+{% if online['super_hard_channel']|length > 0 %}
+    <div>
+        <div>
+            <strong>CH.SUPER_HARD [{{ online['super_hard_channel']|length }}]</strong>
+        </div>
+        <div>
+            {% for row in online['super_hard_channel'] %}
+                {{ '[Lv.{0:03d}]'.format(row['player_level']) }}&nbsp;&nbsp;{{ row['player_nickname'] }}
+                <br>
+            {% endfor %}
+        </div>
+    </div>
+{% endif %}
+{% if online['hard_channel']|length > 0 %}
+    <div>
+        <div>
+            <strong>CH.HARD [{{ online['hard_channel']|length }}]</strong>
+        </div>
+        <div>
+            {% for row in online['hard_channel'] %}
+                {{ '[Lv.{0:03d}]'.format(row['player_level']) }}&nbsp;&nbsp;{{ row['player_nickname'] }}
+                <br>
+            {% endfor %}
+        </div>
+    </div>
+{% endif %}
+{% if online['normal_channel']|length > 0 %}
+    <div>
+        <div>
+            <strong>CH.NORMAL [{{ online['normal_channel']|length }}]</strong>
+        </div>
+        <div>
+            {% for row in online['normal_channel'] %}
+                {{ '[Lv.{0:03d}]'.format(row['player_level']) }}&nbsp;&nbsp;{{ row['player_nickname'] }}
+                <br>
+            {% endfor %}
+        </div>
+    </div>
+{% endif %}
+{% if online['easy_channel']|length > 0 %}
+    <div>
+        <div>
+            <strong>CH.EASY [{{ online['easy_channel']|length }}]</strong>
+        </div>
+        <div>
+            {% for row in online['easy_channel'] %}
+                {{ '[Lv.{0:03d}]'.format(row['player_level']) }}&nbsp;&nbsp;{{ row['player_nickname'] }}
+                <br>
+            {% endfor %}
+        </div>
+    </div>
+{% endif %}
+</body>
+</html>

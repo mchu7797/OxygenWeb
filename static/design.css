@@ -1,0 +1,19 @@
+body {
+    background-color: #1e2529;
+}
+
+.main-title {
+    margin-top: 120px;
+    margin-bottom: 120px;
+    text-align: center;
+}
+
+.info-header {
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+table {
+    table-layout: fixed;
+    word-break: break-all;
+}

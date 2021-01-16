@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    
+    <!-- Bootstrap CSS -->
+    <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" rel="stylesheet">
+
+    <!-- Default Design CSS -->
+    <link rel="stylesheet" href="/static/design.css">
+
+    <title>Oxygen - Ranking</title>
+</head>
+<body>
+<nav class="navbar navbar-dark bg-dark navbar-expand-lg sticky-top">
+    <div class="navbar-brand">Oxygen</div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a href="/" class="nav-link">Home</a>
+            </li>
+            <li class="nav-item">
+                <a href="/ranking" class="nav-link">Ranking</a>
+            </li>
+            <li class="nav-item">
+                <a href="/music" class="nav-link">Music</a>
+            </li>
+            <li class="nav-item">
+                <a href="/online" class="nav-link" target="_blank">Online</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="container-fluid">
+    <div class="text-white info-header">
+        <div class="d-flex justify-content-center">
+            <h1>O2JAM RANKING</h1>
+        </div>
+        <br>
+        <div class="d-flex flex-row-reverse">
+            <div class="btn-group" role="group">
+                <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Ranking Category
+                </button>
+                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                    <a href="/ranking/0" class="dropdown-item">P</a>
+                    <a href="/ranking/1" class="dropdown-item">SS</a>
+                    <a href="/ranking/2" class="dropdown-item">S</a>
+                    <a href="/ranking/3" class="dropdown-item">A</a>
+                    <a href="/ranking/4" class="dropdown-item">B</a>
+                    <a href="/ranking/5" class="dropdown-item">C</a>
+                    <a href="/ranking/6" class="dropdown-item">D</a>
+                    <a href="/ranking/7" class="dropdown-item">Clear</a>
+                    <div role="separator" class="dropdown-divider"></div>
+                    <a href="/ranking/8" class="dropdown-item">PlayCount</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr style="border: 2px solid darkgrey">
+    {% if status | length > 0 %}
+        <table class="table table-dark table-borderless">
+            <thead>
+            <th style="width: 10%">#</th>
+            <th style="width: 70%">Nickname</th>
+            <th style="width: 10%">Tier</th>
+            <th style="width: 10%">{{ category_name }}</th>
+            </thead>
+            <tbody>
+            {% for stat in status %}
+                <tr>
+                    <td>{{ stat['row_number'] }}</td>
+                    <td>
+                        <a href="/player-scoreboard/{{ stat['player_code'] }}">{{ stat['player_nickname'] }}</a>
+                    </td>
+                    <td>{{ stat['tier'] }}</td>
+                    <td>{{ stat['rank'] }}</td>
+                </tr>
+            {% endfor %}
+
+            </tbody>
+        </table>
+    {% else %}
+    {% endif %}
+</div>
+<script crossorigin="anonymous"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script crossorigin="anonymous"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script crossorigin="anonymous"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

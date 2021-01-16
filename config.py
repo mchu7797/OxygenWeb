@@ -1,0 +1,3 @@
+SQL_SERVER_IP = 'localhost'
+SQL_ACCOUNT_ID = 'sa'
+SQL_ACCOUNT_PASSWORD = 'rkdmf!!10724'
